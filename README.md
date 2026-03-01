@@ -164,7 +164,7 @@ For the full theoretical framework, see:
 - [x] Stressor sequence design (4 types × 30 variants)
 - [x] LLM-as-Judge scoring system with rubrics
 - [x] Evaluation pipeline (`run_eval.py`)
-- [ ] Baseline results: GPT-5.2, Claude Sonnet 4.6, Llama 4, DeepSeek-R2, Gemini 2.5
+- [ ] Baseline results: GPT-5.2, Claude Sonnet 4.6, Llama 4, DeepSeek-V3.2, Gemini 3.1
 - [ ] Human annotation validation (judge agreement study)
 - [ ] Leaderboard website
 - [ ] Extended stressor library (compositional stressors, 100+ variants)
