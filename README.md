@@ -153,8 +153,8 @@ The key insight: **an agent's "identity" is not what it remembers, but the consi
 BC-Score operationalizes this insight into a measurable benchmark.
 
 For the full theoretical framework, see:
-- Ning, "Behavioral Continuity as Structural Rhythm" (CHI 2026 Workshop)
-- Ning, "MDMA: Multi-Domain Mental Architecture" (ICLR 2026 Workshop)
+- Ning Coeva, "Behavioral Continuity in Agentic LLMs: An Engineering Mental Structure Approach" (ICLR 2026 Workshop — Reliable Autonomy)
+- Ning Coeva, "Cognitive Rhythm as an Oversight Interface: Stop Rubber-Stamping through State-Aware Interaction" (CHI 2026 Workshop W4 — AI CHAOS!)
 
 ---
 
