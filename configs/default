@@ -1,0 +1,51 @@
+# ContinuityBench Default Configuration
+# =======================================
+
+evaluation:
+  # Number of stressor variants to run per type (max 30)
+  variants_per_stressor: 10
+  # Maximum turns per conversation
+  max_turns: 20
+  # Temperature for target model generation
+  temperature: 0.7
+
+scoring:
+  # BC-Score dimension weights (must sum to 1.0)
+  weights:
+    identity: 0.30
+    goal: 0.25
+    abstraction: 0.25
+    style: 0.20
+  
+  # Judge model for LLM-as-Judge scoring
+  judge_model: "openai/gpt-5.2"
+  # Number of independent judge passes per conversation (for agreement)
+  judge_passes: 3
+  # Temperature for judge (low = more consistent)
+  judge_temperature: 0.1
+
+stressors:
+  # Which stressor types to include
+  enabled:
+    - domain_switch
+    - abstraction_hop
+    - goal_interrupt
+    - style_pull
+
+models:
+  # Target models to evaluate (override via CLI --model)
+  targets:
+    - provider: openai
+      model: gpt-5.2
+      api_key_env: OPENAI_API_KEY
+    - provider: anthropic
+      model: claude-sonnet-4-6
+      api_key_env: ANTHROPIC_API_KEY
+
+output:
+  # Output directory for results
+  dir: "./results"
+  # Generate HTML report
+  html_report: true
+  # Generate JSON summary
+  json_summary: true
