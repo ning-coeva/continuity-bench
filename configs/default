@@ -1,3 +1,4 @@
+
 # ContinuityBench Default Configuration
 # =======================================
 
@@ -16,9 +17,10 @@ scoring:
     goal: 0.25
     abstraction: 0.25
     style: 0.20
-  
+
   # Judge model for LLM-as-Judge scoring
-  judge_model: "openai/gpt-5.2"
+  # Using DeepSeek via OpenAI-compatible endpoint
+  judge_model: "openai/deepseek-chat"
   # Number of independent judge passes per conversation (for agreement)
   judge_passes: 3
   # Temperature for judge (low = more consistent)
@@ -36,11 +38,8 @@ models:
   # Target models to evaluate (override via CLI --model)
   targets:
     - provider: openai
-      model: gpt-5.2
+      model: deepseek-chat
       api_key_env: OPENAI_API_KEY
-    - provider: anthropic
-      model: claude-sonnet-4-6
-      api_key_env: ANTHROPIC_API_KEY
 
 output:
   # Output directory for results
