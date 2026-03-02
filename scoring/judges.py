@@ -142,7 +142,7 @@ RUBRICS = {
 @dataclass
 class JudgeConfig:
     """Configuration for the judge system."""
-    model: str = "openai/gpt-5.2"
+    model: str = "openai/deepseek-chat"
     temperature: float = 0.1
     passes: int = 3  # independent evaluations per conversation
     timeout: int = 60
@@ -196,12 +196,18 @@ class JudgeSystem:
 
         if provider == "openai":
             client = self._get_client()
-            response = client.chat.completions.create(
+            # Try with response_format (OpenAI), fall back without (DeepSeek compat)
+            call_kwargs = dict(
                 model=model_name,
                 messages=[{"role": "user", "content": judge_prompt}],
                 temperature=self.config.temperature,
-                response_format={"type": "json_object"},
             )
+            try:
+                response = client.chat.completions.create(
+                    **call_kwargs, response_format={"type": "json_object"},
+                )
+            except Exception:
+                response = client.chat.completions.create(**call_kwargs)
             text = response.choices[0].message.content.strip()
             try:
                 return json.loads(text)
