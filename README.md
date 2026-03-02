@@ -30,6 +30,29 @@ ContinuityBench provides:
 
 ## Quick Start
 
+### Local OpenAI-compatible backends (Ollama / vLLM)
+
+You can point the `openai/...` provider to a local OpenAI-compatible endpoint by setting:
+
+```bash
+export OPENAI_BASE_URL=http://localhost:11434/v1/
+export OPENAI_API_KEY=ollama
+```
+
+This makes it easy to smoke-test the benchmark with local models before using paid APIs.
+
+### Conversation-only smoke test
+
+```bash
+python run_eval.py \
+  --model openai/<your-local-model-name> \
+  --stressors all \
+  --max-variants 1 \
+  --skip-judge \
+  --output results/smoke_test/
+```
+
+
 ```bash
 # Clone the repo
 git clone https://github.com/ning-coeva/continuity-bench.git
@@ -153,8 +176,8 @@ The key insight: **an agent's "identity" is not what it remembers, but the consi
 BC-Score operationalizes this insight into a measurable benchmark.
 
 For the full theoretical framework, see:
-- Ning Coeva, "Behavioral Continuity in Agentic LLMs: An Engineering Mental Structure Approach" (ICLR 2026 Workshop — Reliable Autonomy)
-- Ning Coeva, "Cognitive Rhythm as an Oversight Interface: Stop Rubber-Stamping through State-Aware Interaction" (CHI 2026 Workshop W4 — AI CHAOS!)
+- Ning, "Behavioral Continuity as Structural Rhythm" (CHI 2026 Workshop)
+- Ning, "MDMA: Multi-Domain Mental Architecture" (ICLR 2026 Workshop)
 
 ---
 
@@ -164,7 +187,7 @@ For the full theoretical framework, see:
 - [x] Stressor sequence design (4 types × 30 variants)
 - [x] LLM-as-Judge scoring system with rubrics
 - [x] Evaluation pipeline (`run_eval.py`)
-- [ ] Baseline results: GPT-5.2, Claude Sonnet 4.6, Llama 4, DeepSeek-V3.2, Gemini 3.1
+- [ ] Baseline results: OpenAI GPT-5.2, Anthropic Claude Sonnet 4.6, Meta Llama 4 Scout, DeepSeek-R1, and Google Gemini 2.5 Pro
 - [ ] Human annotation validation (judge agreement study)
 - [ ] Leaderboard website
 - [ ] Extended stressor library (compositional stressors, 100+ variants)
@@ -178,7 +201,7 @@ If you use ContinuityBench in your research, please cite:
 ```bibtex
 @misc{ning2026continuitybench,
   title={ContinuityBench: Measuring Behavioral Continuity in LLM Agents under High-Entropy Interaction},
-  author={Ning Coeva},
+  author={Ning, Coeva},
   year={2026},
   url={https://github.com/ning-coeva/continuity-bench}
 }
