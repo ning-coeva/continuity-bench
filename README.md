@@ -201,7 +201,7 @@ If you use ContinuityBench in your research, please cite:
 ```bibtex
 @misc{ning2026continuitybench,
   title={ContinuityBench: Measuring Behavioral Continuity in LLM Agents under High-Entropy Interaction},
-  author={Ning, Coeva},
+  author={Coeva, Ning},
   year={2026},
   url={https://github.com/ning-coeva/continuity-bench}
 }
