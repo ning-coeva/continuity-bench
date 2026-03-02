@@ -3,9 +3,9 @@
 ContinuityBench Evaluation Runner
 
 Usage:
-    python run_eval.py --model openai/gpt-5.2 --stressors all
+    python run_eval.py --model openai/deepseek-chat --stressors all
     python run_eval.py --model anthropic/claude-sonnet-4-6 --stressors domain_switch
-    python run_eval.py --model openai/gpt-5.2 --config configs/default.yaml --output results/
+    python run_eval.py --model openai/deepseek-chat --config configs/default.yaml --output results/
 """
 
 import argparse
@@ -166,7 +166,7 @@ def main():
     parser = argparse.ArgumentParser(description="ContinuityBench Evaluation Runner")
     parser.add_argument(
         "--model", required=True,
-        help="Target model (e.g., openai/gpt-5.2, anthropic/claude-sonnet-4-6)"
+        help="Target model (e.g., openai/deepseek-chat, anthropic/claude-sonnet-4-6)"
     )
     parser.add_argument(
         "--stressors", default="all",
@@ -186,7 +186,7 @@ def main():
     )
     parser.add_argument(
         "--judge-model", default=None,
-        help="Override judge model (e.g., openai/gpt-5.2)"
+        help="Override judge model (e.g., openai/deepseek-chat)"
     )
     parser.add_argument(
         "--dry-run", action="store_true",
@@ -240,7 +240,7 @@ def main():
     # Initialize judge
     judge = None
     if not args.skip_judge:
-        judge_model = args.judge_model or config.get("scoring", {}).get("judge_model", "openai/gpt-5.2")
+        judge_model = args.judge_model or config.get("scoring", {}).get("judge_model", "openai/deepseek-chat")
         judge_passes = config.get("scoring", {}).get("judge_passes", 3)
         judge_temp = config.get("scoring", {}).get("judge_temperature", 0.1)
         judge = JudgeSystem(JudgeConfig(
