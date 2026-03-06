@@ -480,6 +480,10 @@ Examples:
         "--model-name", default=None,
         help="Display name for the model in reports and leaderboard (e.g. 'Claude Opus 4.6'). Defaults to --model if not provided."
     )
+    parser.add_argument(
+        "--leaderboard", action="store_true",
+        help="Run only the 26 leaderboard stressor variants (reads IDs from configs/default). Equivalent to --stressor-ids with the official set."
+    )
     args = parser.parse_args()
 
     # ---- Rescore mode ----
@@ -535,6 +539,16 @@ Examples:
     if os.path.exists(args.config):
         with open(args.config, encoding="utf-8") as f:
             config = yaml.safe_load(f)
+
+    # --leaderboard flag: load IDs from config
+    if args.leaderboard:
+        lb_ids = config.get("stressors", {}).get("leaderboard_ids", [])
+        if not lb_ids:
+            print("Error: No leaderboard_ids found in config file: %s" % args.config)
+            sys.exit(1)
+        args.stressor_ids = ",".join(lb_ids)
+        args.stressors = "all"  # need all types loaded to filter by ID
+        print("Leaderboard mode: %d stressor variants" % len(lb_ids))
 
     # Determine stressor types
     if args.stressors == "all":

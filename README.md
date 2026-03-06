@@ -22,7 +22,7 @@ BC-Score results under the [reference judge configuration](#reference-judge-conf
 | 5 | DeepSeek-V3.2 (deepseek-chat) | 0.907 | 0.106 | 0.632 | 0.922 | 0.830 | 0.928 | 0.954 |
 | 6 | DeepSeek-V3.2 (deepseek-reasoner) | 0.872 | 0.121 | 0.497 | 0.879 | 0.745 | 0.928 | 0.950 |
 
-> All models evaluated on the same 26-stressor set (v2/v3 variants). Scores are means across all stressors. Min = worst single-stressor BC-Score. Running `--stressors all` evaluates all 45 variants including legacy v1 stressors, which may produce different composite scores. For leaderboard-comparable results, use `--stressor-ids` with the 26 IDs listed in `configs/default`. To contribute a result, submit a PR. See [Contributing](#contributing).
+> All models evaluated on the same 26-stressor set (v2/v3 variants). Scores are means across all stressors. Min = worst single-stressor BC-Score. Running `--stressors all` evaluates all 45 variants including legacy v1 stressors, which may produce different composite scores. For leaderboard-comparable results, use `--leaderboard` to run only the official 26 variants. To contribute a result, submit a PR. See [Contributing](#contributing).
 
 ### Key Findings
 
