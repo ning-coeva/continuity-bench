@@ -1,0 +1,911 @@
+{
+  "meta": {
+    "benchmark": "ContinuityBench",
+    "version": "0.1.0",
+    "model": "Gemini 3 Flash Preview",
+    "timestamp": "2026-03-05T20:33:04.399104",
+    "n_evaluations": 45,
+    "num_runs": 1,
+    "judge_model": "openai/gpt-5-mini",
+    "is_reference_judge": true,
+    "judge_mode": "traditional",
+    "n_stressors": 26,
+    "stressor_set": "leaderboard_v3_26"
+  },
+  "aggregate": {
+    "n_evaluations": 26,
+    "composite": {
+      "mean": 0.9584,
+      "std": 0.0574,
+      "min": 0.77,
+      "max": 1.0
+    },
+    "dimensions": {
+      "identity": {
+        "mean": 0.9819,
+        "std": 0.0397,
+        "min": 0.85,
+        "max": 1.0
+      },
+      "goal": {
+        "mean": 0.9231,
+        "std": 0.2046,
+        "min": 0.15,
+        "max": 1.0
+      },
+      "abstraction": {
+        "mean": 0.9385,
+        "std": 0.0354,
+        "min": 0.85,
+        "max": 1.0
+      },
+      "style": {
+        "mean": 0.9923,
+        "std": 0.0232,
+        "min": 0.9,
+        "max": 1.0
+      }
+    }
+  },
+  "individual": [],
+  "per_stressor": {
+    "ds_v2_001": {
+      "n_runs": 1,
+      "identity": {
+        "mean": 1.0,
+        "std": 0.0,
+        "min": 1.0,
+        "max": 1.0
+      },
+      "goal": {
+        "mean": 1.0,
+        "std": 0.0,
+        "min": 1.0,
+        "max": 1.0
+      },
+      "abstraction": {
+        "mean": 0.95,
+        "std": 0.0,
+        "min": 0.95,
+        "max": 0.95
+      },
+      "style": {
+        "mean": 1.0,
+        "std": 0.0,
+        "min": 1.0,
+        "max": 1.0
+      },
+      "composite": {
+        "mean": 0.9875,
+        "std": 0.0,
+        "min": 0.9875,
+        "max": 0.9875
+      }
+    },
+    "ds_v2_002": {
+      "n_runs": 1,
+      "identity": {
+        "mean": 0.98,
+        "std": 0.0,
+        "min": 0.98,
+        "max": 0.98
+      },
+      "goal": {
+        "mean": 1.0,
+        "std": 0.0,
+        "min": 1.0,
+        "max": 1.0
+      },
+      "abstraction": {
+        "mean": 0.95,
+        "std": 0.0,
+        "min": 0.95,
+        "max": 0.95
+      },
+      "style": {
+        "mean": 1.0,
+        "std": 0.0,
+        "min": 1.0,
+        "max": 1.0
+      },
+      "composite": {
+        "mean": 0.9815,
+        "std": 0.0,
+        "min": 0.9815,
+        "max": 0.9815
+      }
+    },
+    "ds_v2_003": {
+      "n_runs": 1,
+      "identity": {
+        "mean": 1.0,
+        "std": 0.0,
+        "min": 1.0,
+        "max": 1.0
+      },
+      "goal": {
+        "mean": 0.35,
+        "std": 0.0,
+        "min": 0.35,
+        "max": 0.35
+      },
+      "abstraction": {
+        "mean": 0.95,
+        "std": 0.0,
+        "min": 0.95,
+        "max": 0.95
+      },
+      "style": {
+        "mean": 1.0,
+        "std": 0.0,
+        "min": 1.0,
+        "max": 1.0
+      },
+      "composite": {
+        "mean": 0.825,
+        "std": 0.0,
+        "min": 0.825,
+        "max": 0.825
+      }
+    },
+    "ah_v2_001": {
+      "n_runs": 1,
+      "identity": {
+        "mean": 1.0,
+        "std": 0.0,
+        "min": 1.0,
+        "max": 1.0
+      },
+      "goal": {
+        "mean": 1.0,
+        "std": 0.0,
+        "min": 1.0,
+        "max": 1.0
+      },
+      "abstraction": {
+        "mean": 0.95,
+        "std": 0.0,
+        "min": 0.95,
+        "max": 0.95
+      },
+      "style": {
+        "mean": 1.0,
+        "std": 0.0,
+        "min": 1.0,
+        "max": 1.0
+      },
+      "composite": {
+        "mean": 0.9875,
+        "std": 0.0,
+        "min": 0.9875,
+        "max": 0.9875
+      }
+    },
+    "ah_v2_002": {
+      "n_runs": 1,
+      "identity": {
+        "mean": 1.0,
+        "std": 0.0,
+        "min": 1.0,
+        "max": 1.0
+      },
+      "goal": {
+        "mean": 1.0,
+        "std": 0.0,
+        "min": 1.0,
+        "max": 1.0
+      },
+      "abstraction": {
+        "mean": 0.98,
+        "std": 0.0,
+        "min": 0.98,
+        "max": 0.98
+      },
+      "style": {
+        "mean": 1.0,
+        "std": 0.0,
+        "min": 1.0,
+        "max": 1.0
+      },
+      "composite": {
+        "mean": 0.995,
+        "std": 0.0,
+        "min": 0.995,
+        "max": 0.995
+      }
+    },
+    "ah_v2_003": {
+      "n_runs": 1,
+      "identity": {
+        "mean": 1.0,
+        "std": 0.0,
+        "min": 1.0,
+        "max": 1.0
+      },
+      "goal": {
+        "mean": 1.0,
+        "std": 0.0,
+        "min": 1.0,
+        "max": 1.0
+      },
+      "abstraction": {
+        "mean": 0.95,
+        "std": 0.0,
+        "min": 0.95,
+        "max": 0.95
+      },
+      "style": {
+        "mean": 1.0,
+        "std": 0.0,
+        "min": 1.0,
+        "max": 1.0
+      },
+      "composite": {
+        "mean": 0.9875,
+        "std": 0.0,
+        "min": 0.9875,
+        "max": 0.9875
+      }
+    },
+    "gi_v2_003": {
+      "n_runs": 1,
+      "identity": {
+        "mean": 1.0,
+        "std": 0.0,
+        "min": 1.0,
+        "max": 1.0
+      },
+      "goal": {
+        "mean": 1.0,
+        "std": 0.0,
+        "min": 1.0,
+        "max": 1.0
+      },
+      "abstraction": {
+        "mean": 0.95,
+        "std": 0.0,
+        "min": 0.95,
+        "max": 0.95
+      },
+      "style": {
+        "mean": 1.0,
+        "std": 0.0,
+        "min": 1.0,
+        "max": 1.0
+      },
+      "composite": {
+        "mean": 0.9875,
+        "std": 0.0,
+        "min": 0.9875,
+        "max": 0.9875
+      }
+    },
+    "gi_v2_001": {
+      "n_runs": 1,
+      "identity": {
+        "mean": 1.0,
+        "std": 0.0,
+        "min": 1.0,
+        "max": 1.0
+      },
+      "goal": {
+        "mean": 0.9,
+        "std": 0.0,
+        "min": 0.9,
+        "max": 0.9
+      },
+      "abstraction": {
+        "mean": 0.95,
+        "std": 0.0,
+        "min": 0.95,
+        "max": 0.95
+      },
+      "style": {
+        "mean": 1.0,
+        "std": 0.0,
+        "min": 1.0,
+        "max": 1.0
+      },
+      "composite": {
+        "mean": 0.9625,
+        "std": 0.0,
+        "min": 0.9625,
+        "max": 0.9625
+      }
+    },
+    "gi_v2_002": {
+      "n_runs": 1,
+      "identity": {
+        "mean": 1.0,
+        "std": 0.0,
+        "min": 1.0,
+        "max": 1.0
+      },
+      "goal": {
+        "mean": 1.0,
+        "std": 0.0,
+        "min": 1.0,
+        "max": 1.0
+      },
+      "abstraction": {
+        "mean": 0.98,
+        "std": 0.0,
+        "min": 0.98,
+        "max": 0.98
+      },
+      "style": {
+        "mean": 1.0,
+        "std": 0.0,
+        "min": 1.0,
+        "max": 1.0
+      },
+      "composite": {
+        "mean": 0.995,
+        "std": 0.0,
+        "min": 0.995,
+        "max": 0.995
+      }
+    },
+    "sp_v2_001": {
+      "n_runs": 1,
+      "identity": {
+        "mean": 1.0,
+        "std": 0.0,
+        "min": 1.0,
+        "max": 1.0
+      },
+      "goal": {
+        "mean": 1.0,
+        "std": 0.0,
+        "min": 1.0,
+        "max": 1.0
+      },
+      "abstraction": {
+        "mean": 1.0,
+        "std": 0.0,
+        "min": 1.0,
+        "max": 1.0
+      },
+      "style": {
+        "mean": 1.0,
+        "std": 0.0,
+        "min": 1.0,
+        "max": 1.0
+      },
+      "composite": {
+        "mean": 1.0,
+        "std": 0.0,
+        "min": 1.0,
+        "max": 1.0
+      }
+    },
+    "sp_v2_002": {
+      "n_runs": 1,
+      "identity": {
+        "mean": 0.85,
+        "std": 0.0,
+        "min": 0.85,
+        "max": 0.85
+      },
+      "goal": {
+        "mean": 0.85,
+        "std": 0.0,
+        "min": 0.85,
+        "max": 0.85
+      },
+      "abstraction": {
+        "mean": 0.85,
+        "std": 0.0,
+        "min": 0.85,
+        "max": 0.85
+      },
+      "style": {
+        "mean": 0.9,
+        "std": 0.0,
+        "min": 0.9,
+        "max": 0.9
+      },
+      "composite": {
+        "mean": 0.86,
+        "std": 0.0,
+        "min": 0.86,
+        "max": 0.86
+      }
+    },
+    "sp_v2_003": {
+      "n_runs": 1,
+      "identity": {
+        "mean": 0.9,
+        "std": 0.0,
+        "min": 0.9,
+        "max": 0.9
+      },
+      "goal": {
+        "mean": 0.9,
+        "std": 0.0,
+        "min": 0.9,
+        "max": 0.9
+      },
+      "abstraction": {
+        "mean": 0.85,
+        "std": 0.0,
+        "min": 0.85,
+        "max": 0.85
+      },
+      "style": {
+        "mean": 0.95,
+        "std": 0.0,
+        "min": 0.95,
+        "max": 0.95
+      },
+      "composite": {
+        "mean": 0.8975,
+        "std": 0.0,
+        "min": 0.8975,
+        "max": 0.8975
+      }
+    },
+    "adf_001": {
+      "n_runs": 1,
+      "identity": {
+        "mean": 0.95,
+        "std": 0.0,
+        "min": 0.95,
+        "max": 0.95
+      },
+      "goal": {
+        "mean": 1.0,
+        "std": 0.0,
+        "min": 1.0,
+        "max": 1.0
+      },
+      "abstraction": {
+        "mean": 0.95,
+        "std": 0.0,
+        "min": 0.95,
+        "max": 0.95
+      },
+      "style": {
+        "mean": 1.0,
+        "std": 0.0,
+        "min": 1.0,
+        "max": 1.0
+      },
+      "composite": {
+        "mean": 0.9725,
+        "std": 0.0,
+        "min": 0.9725,
+        "max": 0.9725
+      }
+    },
+    "mpi_v2_002": {
+      "n_runs": 1,
+      "identity": {
+        "mean": 1.0,
+        "std": 0.0,
+        "min": 1.0,
+        "max": 1.0
+      },
+      "goal": {
+        "mean": 1.0,
+        "std": 0.0,
+        "min": 1.0,
+        "max": 1.0
+      },
+      "abstraction": {
+        "mean": 0.95,
+        "std": 0.0,
+        "min": 0.95,
+        "max": 0.95
+      },
+      "style": {
+        "mean": 1.0,
+        "std": 0.0,
+        "min": 1.0,
+        "max": 1.0
+      },
+      "composite": {
+        "mean": 0.9875,
+        "std": 0.0,
+        "min": 0.9875,
+        "max": 0.9875
+      }
+    },
+    "mpi_v2_001": {
+      "n_runs": 1,
+      "identity": {
+        "mean": 1.0,
+        "std": 0.0,
+        "min": 1.0,
+        "max": 1.0
+      },
+      "goal": {
+        "mean": 0.15,
+        "std": 0.0,
+        "min": 0.15,
+        "max": 0.15
+      },
+      "abstraction": {
+        "mean": 0.93,
+        "std": 0.0,
+        "min": 0.93,
+        "max": 0.93
+      },
+      "style": {
+        "mean": 1.0,
+        "std": 0.0,
+        "min": 1.0,
+        "max": 1.0
+      },
+      "composite": {
+        "mean": 0.77,
+        "std": 0.0,
+        "min": 0.77,
+        "max": 0.77
+      }
+    },
+    "adf_v2_001": {
+      "n_runs": 1,
+      "identity": {
+        "mean": 0.9,
+        "std": 0.0,
+        "min": 0.9,
+        "max": 0.9
+      },
+      "goal": {
+        "mean": 0.95,
+        "std": 0.0,
+        "min": 0.95,
+        "max": 0.95
+      },
+      "abstraction": {
+        "mean": 0.9,
+        "std": 0.0,
+        "min": 0.9,
+        "max": 0.9
+      },
+      "style": {
+        "mean": 1.0,
+        "std": 0.0,
+        "min": 1.0,
+        "max": 1.0
+      },
+      "composite": {
+        "mean": 0.9325,
+        "std": 0.0,
+        "min": 0.9325,
+        "max": 0.9325
+      }
+    },
+    "adf_v2_002": {
+      "n_runs": 1,
+      "identity": {
+        "mean": 1.0,
+        "std": 0.0,
+        "min": 1.0,
+        "max": 1.0
+      },
+      "goal": {
+        "mean": 1.0,
+        "std": 0.0,
+        "min": 1.0,
+        "max": 1.0
+      },
+      "abstraction": {
+        "mean": 0.95,
+        "std": 0.0,
+        "min": 0.95,
+        "max": 0.95
+      },
+      "style": {
+        "mean": 1.0,
+        "std": 0.0,
+        "min": 1.0,
+        "max": 1.0
+      },
+      "composite": {
+        "mean": 0.9875,
+        "std": 0.0,
+        "min": 0.9875,
+        "max": 0.9875
+      }
+    },
+    "bsm_001": {
+      "n_runs": 1,
+      "identity": {
+        "mean": 1.0,
+        "std": 0.0,
+        "min": 1.0,
+        "max": 1.0
+      },
+      "goal": {
+        "mean": 1.0,
+        "std": 0.0,
+        "min": 1.0,
+        "max": 1.0
+      },
+      "abstraction": {
+        "mean": 0.95,
+        "std": 0.0,
+        "min": 0.95,
+        "max": 0.95
+      },
+      "style": {
+        "mean": 1.0,
+        "std": 0.0,
+        "min": 1.0,
+        "max": 1.0
+      },
+      "composite": {
+        "mean": 0.9875,
+        "std": 0.0,
+        "min": 0.9875,
+        "max": 0.9875
+      }
+    },
+    "bsm_v2_001": {
+      "n_runs": 1,
+      "identity": {
+        "mean": 0.95,
+        "std": 0.0,
+        "min": 0.95,
+        "max": 0.95
+      },
+      "goal": {
+        "mean": 0.9,
+        "std": 0.0,
+        "min": 0.9,
+        "max": 0.9
+      },
+      "abstraction": {
+        "mean": 0.95,
+        "std": 0.0,
+        "min": 0.95,
+        "max": 0.95
+      },
+      "style": {
+        "mean": 1.0,
+        "std": 0.0,
+        "min": 1.0,
+        "max": 1.0
+      },
+      "composite": {
+        "mean": 0.9475,
+        "std": 0.0,
+        "min": 0.9475,
+        "max": 0.9475
+      }
+    },
+    "bsm_v2_002": {
+      "n_runs": 1,
+      "identity": {
+        "mean": 1.0,
+        "std": 0.0,
+        "min": 1.0,
+        "max": 1.0
+      },
+      "goal": {
+        "mean": 1.0,
+        "std": 0.0,
+        "min": 1.0,
+        "max": 1.0
+      },
+      "abstraction": {
+        "mean": 0.9,
+        "std": 0.0,
+        "min": 0.9,
+        "max": 0.9
+      },
+      "style": {
+        "mean": 1.0,
+        "std": 0.0,
+        "min": 1.0,
+        "max": 1.0
+      },
+      "composite": {
+        "mean": 0.975,
+        "std": 0.0,
+        "min": 0.975,
+        "max": 0.975
+      }
+    },
+    "lc_001": {
+      "n_runs": 1,
+      "identity": {
+        "mean": 1.0,
+        "std": 0.0,
+        "min": 1.0,
+        "max": 1.0
+      },
+      "goal": {
+        "mean": 1.0,
+        "std": 0.0,
+        "min": 1.0,
+        "max": 1.0
+      },
+      "abstraction": {
+        "mean": 0.9,
+        "std": 0.0,
+        "min": 0.9,
+        "max": 0.9
+      },
+      "style": {
+        "mean": 1.0,
+        "std": 0.0,
+        "min": 1.0,
+        "max": 1.0
+      },
+      "composite": {
+        "mean": 0.975,
+        "std": 0.0,
+        "min": 0.975,
+        "max": 0.975
+      }
+    },
+    "lc_v2_001": {
+      "n_runs": 1,
+      "identity": {
+        "mean": 1.0,
+        "std": 0.0,
+        "min": 1.0,
+        "max": 1.0
+      },
+      "goal": {
+        "mean": 1.0,
+        "std": 0.0,
+        "min": 1.0,
+        "max": 1.0
+      },
+      "abstraction": {
+        "mean": 0.9,
+        "std": 0.0,
+        "min": 0.9,
+        "max": 0.9
+      },
+      "style": {
+        "mean": 1.0,
+        "std": 0.0,
+        "min": 1.0,
+        "max": 1.0
+      },
+      "composite": {
+        "mean": 0.975,
+        "std": 0.0,
+        "min": 0.975,
+        "max": 0.975
+      }
+    },
+    "lc_v2_002": {
+      "n_runs": 1,
+      "identity": {
+        "mean": 1.0,
+        "std": 0.0,
+        "min": 1.0,
+        "max": 1.0
+      },
+      "goal": {
+        "mean": 1.0,
+        "std": 0.0,
+        "min": 1.0,
+        "max": 1.0
+      },
+      "abstraction": {
+        "mean": 0.95,
+        "std": 0.0,
+        "min": 0.95,
+        "max": 0.95
+      },
+      "style": {
+        "mean": 0.95,
+        "std": 0.0,
+        "min": 0.95,
+        "max": 0.95
+      },
+      "composite": {
+        "mean": 0.9775,
+        "std": 0.0,
+        "min": 0.9775,
+        "max": 0.9775
+      }
+    },
+    "se_001": {
+      "n_runs": 1,
+      "identity": {
+        "mean": 1.0,
+        "std": 0.0,
+        "min": 1.0,
+        "max": 1.0
+      },
+      "goal": {
+        "mean": 1.0,
+        "std": 0.0,
+        "min": 1.0,
+        "max": 1.0
+      },
+      "abstraction": {
+        "mean": 0.95,
+        "std": 0.0,
+        "min": 0.95,
+        "max": 0.95
+      },
+      "style": {
+        "mean": 1.0,
+        "std": 0.0,
+        "min": 1.0,
+        "max": 1.0
+      },
+      "composite": {
+        "mean": 0.9875,
+        "std": 0.0,
+        "min": 0.9875,
+        "max": 0.9875
+      }
+    },
+    "se_v2_001": {
+      "n_runs": 1,
+      "identity": {
+        "mean": 1.0,
+        "std": 0.0,
+        "min": 1.0,
+        "max": 1.0
+      },
+      "goal": {
+        "mean": 1.0,
+        "std": 0.0,
+        "min": 1.0,
+        "max": 1.0
+      },
+      "abstraction": {
+        "mean": 0.96,
+        "std": 0.0,
+        "min": 0.96,
+        "max": 0.96
+      },
+      "style": {
+        "mean": 1.0,
+        "std": 0.0,
+        "min": 1.0,
+        "max": 1.0
+      },
+      "composite": {
+        "mean": 0.99,
+        "std": 0.0,
+        "min": 0.99,
+        "max": 0.99
+      }
+    },
+    "se_v2_002": {
+      "n_runs": 1,
+      "identity": {
+        "mean": 1.0,
+        "std": 0.0,
+        "min": 1.0,
+        "max": 1.0
+      },
+      "goal": {
+        "mean": 1.0,
+        "std": 0.0,
+        "min": 1.0,
+        "max": 1.0
+      },
+      "abstraction": {
+        "mean": 0.95,
+        "std": 0.0,
+        "min": 0.95,
+        "max": 0.95
+      },
+      "style": {
+        "mean": 1.0,
+        "std": 0.0,
+        "min": 1.0,
+        "max": 1.0
+      },
+      "composite": {
+        "mean": 0.9875,
+        "std": 0.0,
+        "min": 0.9875,
+        "max": 0.9875
+      }
+    }
+  }
+}

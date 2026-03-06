@@ -1,0 +1,35 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+.eggs/
+*.egg
+
+# Virtual environments
+venv/
+.venv/
+env/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Results — keep report JSONs, exclude raw conversations (large)
+results/**/*.json
+!results/**/*_report.json
+
+# Claude Code local config
+.claude/
+
+# API keys
+.env
+.env.*
+*.key
