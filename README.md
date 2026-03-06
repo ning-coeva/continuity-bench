@@ -16,19 +16,26 @@ BC-Score results under the [reference judge configuration](#reference-judge-conf
 | Rank | Model | BC-Score | ± std | Min | Identity | Goal | Abstraction | Style |
 |:----:|-------|:--------:|:-----:|:---:|:--------:|:----:|:-----------:|:-----:|
 | 1 | **Claude Opus 4.6** | **0.969** | 0.027 | 0.902 | 0.972 | 0.985 | 0.938 | 0.983 |
-| 2 | Claude Haiku 4.5 | 0.963 | 0.034 | 0.882 | 0.973 | 0.967 | 0.932 | 0.978 |
-| 3 | Claude Sonnet 4.6 | 0.961 | 0.038 | 0.869 | 0.959 | 0.968 | 0.941 | 0.980 |
-| 4 | Gemini 3 Flash Preview | 0.958 | 0.057 | 0.770 | 0.982 | 0.923 | 0.938 | 0.992 |
-| 5 | DeepSeek-V3.2 (deepseek-chat) | 0.907 | 0.106 | 0.632 | 0.922 | 0.830 | 0.928 | 0.954 |
-| 6 | DeepSeek-V3.2 (deepseek-reasoner) | 0.872 | 0.121 | 0.497 | 0.879 | 0.745 | 0.928 | 0.950 |
+| 2 | Gemini 3.1 Pro Preview | 0.968 | 0.046 | 0.775 | 0.985 | 0.955 | 0.937 | 0.998 |
+| 3 | Claude Haiku 4.5 | 0.963 | 0.034 | 0.882 | 0.973 | 0.967 | 0.932 | 0.978 |
+| 4 | Claude Sonnet 4.6 † | 0.959 | 0.038 | 0.800 | 0.964 | 0.960 | 0.933 | 0.983 |
+| 5 | Gemini 3 Flash Preview † | 0.953 | 0.065 | 0.630 | 0.981 | 0.912 | 0.929 | 0.993 |
+| 6 | Qwen 3.5 397B | 0.938 | 0.074 | 0.762 | 0.985 | 0.844 | 0.932 | 0.992 |
+| 7 | DeepSeek-V3.2 (deepseek-chat) † | 0.911 | 0.098 | 0.560 | 0.928 | 0.838 | 0.924 | 0.959 |
+| 8 | DeepSeek-V3.2 (deepseek-reasoner) | 0.872 | 0.121 | 0.497 | 0.879 | 0.745 | 0.928 | 0.950 |
+| 9 | Llama 4 Maverick | 0.867 | 0.124 | 0.530 | 0.857 | 0.837 | 0.870 | 0.917 |
 
-> All models evaluated on the same 26-stressor set (v2/v3 variants). Scores are means across all stressors. Min = worst single-stressor BC-Score. Running `--stressors all` evaluates all 45 variants including legacy v1 stressors, which may produce different composite scores. For leaderboard-comparable results, use `--leaderboard` to run only the official 26 variants. To contribute a result, submit a PR. See [Contributing](#contributing).
+> All models evaluated on the same 26-stressor set (v2/v3 variants). Scores are means across all stressors. Min = worst single-stressor BC-Score. † = 3-run reliability-tested (scores are means across 3 independent runs). Running `--stressors all` evaluates all 45 variants including legacy v1 stressors, which may produce different composite scores. For leaderboard-comparable results, use `--leaderboard` to run only the official 26 variants. To contribute a result, submit a PR. See [Contributing](#contributing).
 
 ### Key Findings
 
 **Price ≠ behavioral continuity.** Claude Haiku 4.5 (the cheapest Claude model) outperforms Claude Sonnet 4.6 (a more expensive model) on BC-Score. Behavioral continuity does not scale linearly with model size or cost.
 
-**Thinking harder ≠ staying consistent.** DeepSeek-Reasoner's extended chain-of-thought reasoning scores *lower* than standard DeepSeek-Chat on BC-Score (0.872 vs 0.907), driven by a collapse in Goal preservation (0.745 vs 0.830). Deeper reasoning can actively destabilize behavioral continuity.
+**Thinking harder ≠ staying consistent.** DeepSeek-Reasoner's extended chain-of-thought reasoning scores *lower* than standard DeepSeek-Chat on BC-Score (0.872 vs 0.911), driven by a collapse in Goal preservation (0.745 vs 0.838). Deeper reasoning can actively destabilize behavioral continuity.
+
+**Goal is the universal weak point.** Across all 9 models, Goal preservation shows the highest variance and lowest scores. Reliability testing (3 independent runs) reveals that nearly all high-variance stressors target Goal — models can maintain identity and style under pressure, but frequently lose track of task objectives.
+
+**Open-weight models lag behind.** Llama 4 Maverick (0.867) and Qwen 3.5 397B (0.938) both trail their closed-source counterparts. Qwen shows near-perfect Identity (0.985) and Style (0.992), but Goal drift (0.844) pulls its composite down significantly.
 
 ---
 
@@ -182,11 +189,14 @@ continuity-bench/
 └── results/
     └── v3/                        # Current leaderboard results (report JSONs)
         ├── opus_4.6_report.json
+        ├── gemini_3.1_pro_report.json
         ├── sonnet_4.6_report.json
         ├── haiku_4.5_report.json
         ├── gemini_3_flash_report.json
+        ├── qwen3.5_397b_report.json
         ├── deepseek_chat_report.json
-        └── deepseek_reasoner_report.json
+        ├── deepseek_reasoner_report.json
+        └── llama4_maverick_report.json
 ```
 
 ---
@@ -240,8 +250,9 @@ For the full theoretical framework, see:
 - [x] Evaluation pipeline (`run_eval.py`) with `--num-runs`, per-stressor variance reporting
 - [x] Reference judge configuration for leaderboard comparability
 - [x] Expand stressor library to 26 variants across 9 stressor types
-- [x] Baseline results: Claude Opus 4.6, Sonnet 4.6, Haiku 4.5, Gemini 3 Flash, DeepSeek-V3.2 (chat & reasoner)
-- [ ] Additional baselines: Llama 4 Maverick, Gemini 2.5 Pro, Qwen 3, open-weight models via OpenRouter
+- [x] Baseline results: Claude Opus 4.6, Sonnet 4.6, Haiku 4.5, Gemini 3 Flash, Gemini 3.1 Pro, DeepSeek-V3.2 (chat & reasoner), Llama 4 Maverick, Qwen 3.5 397B
+- [x] Test-retest reliability: 3-run validation on Sonnet 4.6, Gemini 3 Flash, DeepSeek-chat
+- [ ] Additional baselines: Grok, Mistral, more open-weight models via OpenRouter
 - [ ] Human annotation validation (judge–human agreement study)
 - [ ] Leaderboard website
 - [ ] Extended stressor library (100+ variants)
