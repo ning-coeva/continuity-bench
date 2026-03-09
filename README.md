@@ -20,12 +20,12 @@ BC-Score results under the [reference judge configuration](#reference-judge-conf
 | 3 | Kimi K2.5 | 0.967 | 0.031 | 0.873 | 0.973 | 0.978 | 0.935 | 0.983 |
 | 4 | Claude Haiku 4.5 | 0.963 | 0.034 | 0.882 | 0.973 | 0.967 | 0.932 | 0.978 |
 | 5 | Claude Sonnet 4.6 † | 0.959 | 0.038 | 0.800 | 0.964 | 0.960 | 0.933 | 0.983 |
-| 6 | GLM-5 ‡ | 0.957 | 0.045 | 0.823 | 0.968 | 0.959 | 0.930 | 0.974 |
+| 6 | GLM-5 | 0.959 | 0.045 | 0.823 | 0.969 | 0.961 | 0.931 | 0.975 |
 | 7 | Qwen 3.5 Flash | 0.955 | 0.050 | 0.785 | 0.982 | 0.907 | 0.935 | 1.000 |
 | 8 | Gemini 3 Flash Preview † | 0.953 | 0.065 | 0.630 | 0.981 | 0.912 | 0.929 | 0.993 |
 | 9 | MiniMax M2.5 | 0.943 | 0.061 | 0.715 | 0.933 | 0.944 | 0.921 | 0.982 |
 | 10 | Qwen 3.5 397B | 0.938 | 0.074 | 0.762 | 0.985 | 0.844 | 0.932 | 0.992 |
-| 11 | ERNIE 5.0 ‡ | 0.934 | 0.079 | 0.713 | 0.982 | 0.859 | 0.912 | 0.986 |
+| 11 | ERNIE 5.0 ‡ | 0.931 | 0.085 | 0.713 | 0.983 | 0.842 | 0.915 | 0.986 |
 | 12 | Doubao Seed 2.0 Pro | 0.924 | 0.095 | 0.693 | 0.969 | 0.811 | 0.931 | 0.990 |
 | 13 | DeepSeek-V3.2 (deepseek-chat) † | 0.911 | 0.098 | 0.560 | 0.928 | 0.838 | 0.924 | 0.959 |
 | 14 | Doubao Seed 2.0 Lite | 0.876 | 0.105 | 0.675 | 0.912 | 0.714 | 0.922 | 0.965 |
@@ -33,7 +33,7 @@ BC-Score results under the [reference judge configuration](#reference-judge-conf
 | 16 | Llama 4 Maverick | 0.867 | 0.124 | 0.530 | 0.857 | 0.837 | 0.870 | 0.917 |
 | 17 | Doubao Seed 2.0 Mini | 0.813 | 0.135 | 0.450 | 0.874 | 0.565 | 0.905 | 0.917 |
 
-> All models evaluated on the same 26-stressor set (v2/v3 variants). Scores are means across all stressors. Min = worst single-stressor BC-Score. † = 3-run reliability-tested (scores are means across 3 independent runs). ‡ = fewer than 26 stressors completed due to connection errors (GLM-5: 25/26, ERNIE 5.0: 22/26). Running `--stressors all` evaluates all 45 variants including legacy v1 stressors, which may produce different composite scores. For leaderboard-comparable results, use `--leaderboard` to run only the official 26 variants. To contribute a result, submit a PR. See [Contributing](#contributing).
+> All models evaluated on the same 26-stressor set (v2/v3 variants). Scores are means across all stressors. Min = worst single-stressor BC-Score. † = 3-run reliability-tested (scores are means across 3 independent runs). ‡ = 25/26 stressors completed (1 persistent connection error on Baidu API). Running `--stressors all` evaluates all 45 variants including legacy v1 stressors, which may produce different composite scores. For leaderboard-comparable results, use `--leaderboard` to run only the official 26 variants. To contribute a result, submit a PR. See [Contributing](#contributing).
 
 ### Key Findings
 
