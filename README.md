@@ -17,25 +17,35 @@ BC-Score results under the [reference judge configuration](#reference-judge-conf
 |:----:|-------|:--------:|:-----:|:---:|:--------:|:----:|:-----------:|:-----:|
 | 1 | **Claude Opus 4.6** | **0.969** | 0.027 | 0.902 | 0.972 | 0.985 | 0.938 | 0.983 |
 | 2 | Gemini 3.1 Pro Preview | 0.968 | 0.046 | 0.775 | 0.985 | 0.955 | 0.937 | 0.998 |
-| 3 | Claude Haiku 4.5 | 0.963 | 0.034 | 0.882 | 0.973 | 0.967 | 0.932 | 0.978 |
-| 4 | Claude Sonnet 4.6 † | 0.959 | 0.038 | 0.800 | 0.964 | 0.960 | 0.933 | 0.983 |
-| 5 | Gemini 3 Flash Preview † | 0.953 | 0.065 | 0.630 | 0.981 | 0.912 | 0.929 | 0.993 |
-| 6 | Qwen 3.5 397B | 0.938 | 0.074 | 0.762 | 0.985 | 0.844 | 0.932 | 0.992 |
-| 7 | DeepSeek-V3.2 (deepseek-chat) † | 0.911 | 0.098 | 0.560 | 0.928 | 0.838 | 0.924 | 0.959 |
-| 8 | DeepSeek-V3.2 (deepseek-reasoner) | 0.872 | 0.121 | 0.497 | 0.879 | 0.745 | 0.928 | 0.950 |
-| 9 | Llama 4 Maverick | 0.867 | 0.124 | 0.530 | 0.857 | 0.837 | 0.870 | 0.917 |
+| 3 | Kimi K2.5 | 0.967 | 0.031 | 0.873 | 0.973 | 0.978 | 0.935 | 0.983 |
+| 4 | Claude Haiku 4.5 | 0.963 | 0.034 | 0.882 | 0.973 | 0.967 | 0.932 | 0.978 |
+| 5 | Claude Sonnet 4.6 † | 0.959 | 0.038 | 0.800 | 0.964 | 0.960 | 0.933 | 0.983 |
+| 6 | GLM-5 ‡ | 0.957 | 0.045 | 0.823 | 0.968 | 0.959 | 0.930 | 0.974 |
+| 7 | Qwen 3.5 Flash | 0.955 | 0.050 | 0.785 | 0.982 | 0.907 | 0.935 | 1.000 |
+| 8 | Gemini 3 Flash Preview † | 0.953 | 0.065 | 0.630 | 0.981 | 0.912 | 0.929 | 0.993 |
+| 9 | MiniMax M2.5 | 0.943 | 0.061 | 0.715 | 0.933 | 0.944 | 0.921 | 0.982 |
+| 10 | Qwen 3.5 397B | 0.938 | 0.074 | 0.762 | 0.985 | 0.844 | 0.932 | 0.992 |
+| 11 | ERNIE 5.0 ‡ | 0.934 | 0.079 | 0.713 | 0.982 | 0.859 | 0.912 | 0.986 |
+| 12 | Doubao Seed 2.0 Pro | 0.924 | 0.095 | 0.693 | 0.969 | 0.811 | 0.931 | 0.990 |
+| 13 | DeepSeek-V3.2 (deepseek-chat) † | 0.911 | 0.098 | 0.560 | 0.928 | 0.838 | 0.924 | 0.959 |
+| 14 | Doubao Seed 2.0 Lite | 0.876 | 0.105 | 0.675 | 0.912 | 0.714 | 0.922 | 0.965 |
+| 15 | DeepSeek-V3.2 (deepseek-reasoner) | 0.872 | 0.121 | 0.497 | 0.879 | 0.745 | 0.928 | 0.950 |
+| 16 | Llama 4 Maverick | 0.867 | 0.124 | 0.530 | 0.857 | 0.837 | 0.870 | 0.917 |
+| 17 | Doubao Seed 2.0 Mini | 0.813 | 0.135 | 0.450 | 0.874 | 0.565 | 0.905 | 0.917 |
 
-> All models evaluated on the same 26-stressor set (v2/v3 variants). Scores are means across all stressors. Min = worst single-stressor BC-Score. † = 3-run reliability-tested (scores are means across 3 independent runs). Running `--stressors all` evaluates all 45 variants including legacy v1 stressors, which may produce different composite scores. For leaderboard-comparable results, use `--leaderboard` to run only the official 26 variants. To contribute a result, submit a PR. See [Contributing](#contributing).
+> All models evaluated on the same 26-stressor set (v2/v3 variants). Scores are means across all stressors. Min = worst single-stressor BC-Score. † = 3-run reliability-tested (scores are means across 3 independent runs). ‡ = fewer than 26 stressors completed due to connection errors (GLM-5: 25/26, ERNIE 5.0: 22/26). Running `--stressors all` evaluates all 45 variants including legacy v1 stressors, which may produce different composite scores. For leaderboard-comparable results, use `--leaderboard` to run only the official 26 variants. To contribute a result, submit a PR. See [Contributing](#contributing).
 
 ### Key Findings
 
-**Price ≠ behavioral continuity.** Claude Haiku 4.5 (the cheapest Claude model) outperforms Claude Sonnet 4.6 (a more expensive model) on BC-Score. Behavioral continuity does not scale linearly with model size or cost.
+**Chinese models are highly competitive.** Kimi K2.5 (0.967) ranks #3 overall, just behind Opus and Gemini Pro. GLM-5 (0.957) and Qwen 3.5 Flash (0.955) also crack the top 7, outperforming Claude Sonnet 4.6. The best Chinese models match or exceed leading Western models on behavioral continuity.
 
-**Thinking harder ≠ staying consistent.** DeepSeek-Reasoner's extended chain-of-thought reasoning scores *lower* than standard DeepSeek-Chat on BC-Score (0.872 vs 0.911), driven by a collapse in Goal preservation (0.745 vs 0.838). Deeper reasoning can actively destabilize behavioral continuity.
+**Price ≠ behavioral continuity.** Claude Haiku 4.5 (the cheapest Claude model) outperforms Claude Sonnet 4.6 (a more expensive model) on BC-Score. Kimi K2.5, available via DashScope at commodity pricing, outperforms most frontier models.
 
-**Goal is the universal weak point.** Across all 9 models, Goal preservation shows the highest variance and lowest scores. Reliability testing (3 independent runs) reveals that nearly all high-variance stressors target Goal — models can maintain identity and style under pressure, but frequently lose track of task objectives.
+**Thinking harder ≠ staying consistent.** DeepSeek-Reasoner's extended chain-of-thought reasoning scores *lower* than standard DeepSeek-Chat on BC-Score (0.872 vs 0.911), driven by a collapse in Goal preservation (0.745 vs 0.838). Doubao Seed 2.0 Pro (with built-in deep thinking) similarly underperforms relative to its Identity scores.
 
-**Open-weight models lag behind.** Llama 4 Maverick (0.867) and Qwen 3.5 397B (0.938) both trail their closed-source counterparts. Qwen shows near-perfect Identity (0.985) and Style (0.992), but Goal drift (0.844) pulls its composite down significantly.
+**Goal is the universal weak point.** Across all 17 models, Goal preservation shows the highest variance and lowest scores. The bottom 5 models all have Goal scores below 0.84. Kimi K2.5 is a notable exception with Goal at 0.978 — the second-highest after Opus (0.985).
+
+**Model size matters within families, but not across them.** Doubao Mini (0.813) → Lite (0.876) → Pro (0.924) shows clear scaling within a family, driven primarily by Goal preservation (0.565 → 0.714 → 0.811). But smaller models from other families (e.g., Qwen 3.5 Flash at 0.955) can far exceed larger models from weaker families.
 
 ---
 
@@ -187,16 +197,24 @@ continuity-bench/
 │   ├── sef_judges.py              # SEF protocol judge (alternative mode)
 │   └── report.py                  # Report generation
 └── results/
-    └── v3/                        # Current leaderboard results (report JSONs)
+    └── v3/                        # Current leaderboard results (17 report JSONs)
         ├── opus_4.6_report.json
         ├── gemini_3.1_pro_report.json
         ├── sonnet_4.6_report.json
         ├── haiku_4.5_report.json
         ├── gemini_3_flash_report.json
         ├── qwen3.5_397b_report.json
+        ├── qwen3.5_flash_report.json
         ├── deepseek_chat_report.json
         ├── deepseek_reasoner_report.json
-        └── llama4_maverick_report.json
+        ├── llama4_maverick_report.json
+        ├── kimi_k2.5_report.json
+        ├── glm5_report.json
+        ├── minimax_m2.5_report.json
+        ├── ernie5_report.json
+        ├── doubao_pro_report.json
+        ├── doubao_lite_report.json
+        └── doubao_mini_report.json
 ```
 
 ---
@@ -250,9 +268,10 @@ For the full theoretical framework, see:
 - [x] Evaluation pipeline (`run_eval.py`) with `--num-runs`, per-stressor variance reporting
 - [x] Reference judge configuration for leaderboard comparability
 - [x] Expand stressor library to 26 variants across 9 stressor types
-- [x] Baseline results: Claude Opus 4.6, Sonnet 4.6, Haiku 4.5, Gemini 3 Flash, Gemini 3.1 Pro, DeepSeek-V3.2 (chat & reasoner), Llama 4 Maverick, Qwen 3.5 397B
+- [x] Baseline results: 17 models across 6 API providers (Anthropic, Google, DeepSeek, Meta, Alibaba Cloud, ByteDance, Baidu, Moonshot, MiniMax)
 - [x] Test-retest reliability: 3-run validation on Sonnet 4.6, Gemini 3 Flash, DeepSeek-chat
-- [ ] Additional baselines: Grok, Mistral, more open-weight models via OpenRouter
+- [x] Chinese model expansion: Kimi K2.5, GLM-5, Qwen 3.5 Flash, MiniMax M2.5, ERNIE 5.0, Doubao Seed 2.0 (Pro/Lite/Mini)
+- [ ] Additional baselines: Grok, Mistral, more open-weight models
 - [ ] Human annotation validation (judge–human agreement study)
 - [ ] Leaderboard website
 - [ ] Extended stressor library (100+ variants)

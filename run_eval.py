@@ -80,6 +80,9 @@ load_dotenv()
 # ============================================================
 
 DEEPSEEK_BASE_URL = "https://api.deepseek.com"
+DOUBAO_BASE_URL = "https://ark.cn-beijing.volces.com/api/v3"
+ALIYUN_BASE_URL = "https://dashscope.aliyuncs.com/compatible-mode/v1"
+BAIDU_BASE_URL = "https://qianfan.baidubce.com/v2"
 
 
 def create_model_client(model_spec: str):
@@ -90,6 +93,9 @@ def create_model_client(model_spec: str):
         - deepseek/  -> DeepSeek API (uses DEEPSEEK_API_KEY)
         - openai/    -> OpenAI or compatible (uses OPENAI_API_KEY + optional OPENAI_BASE_URL)
         - anthropic/ -> Anthropic API (uses ANTHROPIC_API_KEY)
+        - doubao/    -> Doubao / Volcengine API (uses DOUBAO_API_KEY)
+        - aliyun/    -> Aliyun DashScope API (uses ALIYUN_API_KEY)
+        - baidu/     -> Baidu Qianfan API (uses BAIDU_API_KEY)
     """
     provider, model_name = model_spec.split("/", 1)
 
@@ -105,6 +111,42 @@ def create_model_client(model_spec: str):
             api_key=api_key,
             base_url=DEEPSEEK_BASE_URL,
         )
+    elif provider == "doubao":
+        import openai
+        api_key = os.getenv("DOUBAO_API_KEY")
+        if not api_key:
+            print("Error: DOUBAO_API_KEY not set.")
+            print("  Set it via: set DOUBAO_API_KEY=your-key  (Windows)")
+            print("  Or add to .env file: DOUBAO_API_KEY=your-key")
+            sys.exit(1)
+        return "openai", model_name, openai.OpenAI(
+            api_key=api_key,
+            base_url=DOUBAO_BASE_URL,
+        )
+    elif provider == "aliyun":
+        import openai
+        api_key = os.getenv("ALIYUN_API_KEY")
+        if not api_key:
+            print("Error: ALIYUN_API_KEY not set.")
+            print("  Set it via: set ALIYUN_API_KEY=your-key  (Windows)")
+            print("  Or add to .env file: ALIYUN_API_KEY=your-key")
+            sys.exit(1)
+        return "openai", model_name, openai.OpenAI(
+            api_key=api_key,
+            base_url=ALIYUN_BASE_URL,
+        )
+    elif provider == "baidu":
+        import openai
+        api_key = os.getenv("BAIDU_API_KEY")
+        if not api_key:
+            print("Error: BAIDU_API_KEY not set.")
+            print("  Set it via: set BAIDU_API_KEY=your-key  (Windows)")
+            print("  Or add to .env file: BAIDU_API_KEY=your-key")
+            sys.exit(1)
+        return "openai", model_name, openai.OpenAI(
+            api_key=api_key,
+            base_url=BAIDU_BASE_URL,
+        )
     elif provider == "openai":
         import openai
         base_url = os.getenv("OPENAI_BASE_URL")
@@ -118,7 +160,7 @@ def create_model_client(model_spec: str):
         return "anthropic", model_name, anthropic.Anthropic()
     else:
         print("Error: Unsupported provider '%s'." % provider)
-        print("  Supported: deepseek/, openai/, anthropic/")
+        print("  Supported: deepseek/, openai/, anthropic/, doubao/, aliyun/, baidu/")
         print("  Example:   --model deepseek/deepseek-chat")
         sys.exit(1)
 
