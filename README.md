@@ -15,9 +15,9 @@ BC-Score results under the [reference judge configuration](#reference-judge-conf
 
 | Rank | Model | BC-Score | ± std | Min | Identity | Goal | Abstraction | Style |
 |:----:|-------|:--------:|:-----:|:---:|:--------:|:----:|:-----------:|:-----:|
-| 1 | **Claude Opus 4.6** | **0.969** | 0.027 | 0.902 | 0.972 | 0.985 | 0.938 | 0.983 |
-| 2 | Gemini 3.1 Pro Preview | 0.968 | 0.046 | 0.775 | 0.985 | 0.955 | 0.937 | 0.998 |
-| 3 | Kimi K2.5 | 0.967 | 0.031 | 0.873 | 0.973 | 0.978 | 0.935 | 0.983 |
+| 1 | **Kimi K2.5 †** | **0.973** | 0.019 | 0.930 | 0.991 | 0.969 | 0.938 | 0.995 |
+| 2 | Claude Opus 4.6 | 0.969 | 0.027 | 0.902 | 0.972 | 0.985 | 0.938 | 0.983 |
+| 3 | Gemini 3.1 Pro Preview | 0.968 | 0.046 | 0.775 | 0.985 | 0.955 | 0.937 | 0.998 |
 | 4 | GPT-5.3 Chat | 0.965 | 0.047 | 0.750 | 0.981 | 0.942 | 0.949 | 0.990 |
 | 5 | Claude Haiku 4.5 | 0.963 | 0.034 | 0.882 | 0.973 | 0.967 | 0.932 | 0.978 |
 | 6 | Claude Sonnet 4.6 † | 0.959 | 0.038 | 0.800 | 0.964 | 0.960 | 0.933 | 0.983 |
@@ -39,13 +39,13 @@ BC-Score results under the [reference judge configuration](#reference-judge-conf
 
 ### Key Findings
 
-**Chinese models are highly competitive.** Kimi K2.5 (0.967) ranks #3 overall, just behind Opus and Gemini Pro. GLM-5 (0.959) and Qwen 3.5 Flash (0.955) also crack the top 9, outperforming GPT-5.4. The best Chinese models match or exceed leading Western models on behavioral continuity.
+**Chinese models lead the leaderboard.** Kimi K2.5 (0.973, 3-run validated) ranks #1 overall, surpassing Claude Opus 4.6 and Gemini 3.1 Pro. GLM-5 (0.959) and Qwen 3.5 Flash (0.955) also crack the top 9, outperforming GPT-5.4. The best Chinese models match or exceed leading Western models on behavioral continuity.
 
 **Price ≠ behavioral continuity.** Claude Haiku 4.5 (the cheapest Claude model) outperforms Claude Sonnet 4.6 (a more expensive model) on BC-Score. Kimi K2.5, available via DashScope at commodity pricing, outperforms most frontier models.
 
 **Thinking harder ≠ staying consistent.** DeepSeek-Reasoner's extended chain-of-thought reasoning scores *lower* than standard DeepSeek-Chat on BC-Score (0.872 vs 0.911), driven by a collapse in Goal preservation (0.745 vs 0.838). Doubao Seed 2.0 Pro (with built-in deep thinking) similarly underperforms relative to its Identity scores.
 
-**Goal is the universal weak point.** Across all 19 models, Goal preservation shows the highest variance and lowest scores. GPT-5.3 Chat exemplifies this: despite ranking #4 overall (0.965), a single Goal collapse on `mpi_v2_001` (0.150) drags its min to 0.750. Kimi K2.5 is a notable exception with Goal at 0.978 — the second-highest after Opus (0.985).
+**Goal is the universal weak point.** Across all 19 models, Goal preservation shows the highest variance and lowest scores. GPT-5.3 Chat exemplifies this: despite ranking #4 overall (0.965), a single Goal collapse on `mpi_v2_001` (0.150) drags its min to 0.750. Kimi K2.5 is a notable exception with Goal at 0.969 (3-run mean) — and the highest min BC-Score of any model (0.930).
 
 **Model size matters within families, but not across them.** Doubao Mini (0.813) → Lite (0.876) → Pro (0.924) shows clear scaling within a family, driven primarily by Goal preservation (0.565 → 0.714 → 0.811). But smaller models from other families (e.g., Qwen 3.5 Flash at 0.955) can far exceed larger models from weaker families.
 
