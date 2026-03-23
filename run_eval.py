@@ -45,7 +45,6 @@ from tqdm import tqdm
 
 from scoring.bc_score import BCScore
 from scoring.judges import JudgeSystem, JudgeConfig
-from scoring.sef_judges import SEFJudgeSystem, SEFJudgeConfig
 from scoring.report import generate_report
 
 
@@ -222,6 +221,7 @@ STRESSOR_FILES = {
     "burst_switch_meta": "stressors/burst_switch_meta.jsonl",
     "lexical_collision": "stressors/lexical_collision.jsonl",
     "stance_erosion": "stressors/stance_erosion.jsonl",
+    "soc_social_engineering": "stressors/soc_social_engineering.jsonl",
 }
 
 
@@ -495,12 +495,8 @@ Examples:
     )
     parser.add_argument(
         "--judge-mode", default="traditional",
-        choices=["vanilla", "traditional", "sef"],
-        help="Judge mode: 'vanilla' (original), 'traditional' (primary/secondary dims), 'sef' (SEF protocol with anchors + deliberation)"
-    )
-    parser.add_argument(
-        "--energy-aware", action="store_true",
-        help="(SEF mode only) Allocate judge passes based on D/A/G energy states. Reduces API calls ~40-50%% while preserving score quality."
+        choices=["vanilla", "traditional"],
+        help="Judge mode: 'vanilla' (original), 'traditional' (primary/secondary dims)"
     )
     parser.add_argument(
         "--workers", type=int, default=5,
@@ -552,21 +548,11 @@ Examples:
             print("  Reference judge is: %s" % reference_judge)
             print("  Results are non-reference and should not be compared to official leaderboard scores.")
 
-        if args.judge_mode == "sef":
-            ea = getattr(args, "energy_aware", False)
-            judge = SEFJudgeSystem(SEFJudgeConfig(
-                model=judge_model,
-                passes=judge_passes,
-                temperature=judge_temp,
-                enable_deliberation=True,
-                energy_aware=ea,
-            ))
-        else:
-            judge = JudgeSystem(JudgeConfig(
-                model=judge_model,
-                passes=judge_passes,
-                temperature=judge_temp,
-            ))
+        judge = JudgeSystem(JudgeConfig(
+            model=judge_model,
+            passes=judge_passes,
+            temperature=judge_temp,
+        ))
 
         rescore_results(args.rescore, judge, args.output, model_name=args.judge_model or "rescored")
         return
@@ -661,26 +647,15 @@ Examples:
             print("[!] Non-reference judge: %s (reference: %s)" % (judge_model, reference_judge))
             print("    Results should be marked 'non-reference' — do not compare directly to leaderboard scores.")
 
-        if args.judge_mode == "sef":
-            ea = getattr(args, "energy_aware", False)
-            print("Judge mode: SEF Protocol (anchors + deliberation%s)" % (", energy-aware" if ea else ""))
-            judge = SEFJudgeSystem(SEFJudgeConfig(
-                model=judge_model,
-                passes=judge_passes,
-                temperature=judge_temp,
-                enable_deliberation=True,
-                energy_aware=ea,
-            ))
-        else:
-            # "vanilla" and "traditional" use the same JudgeSystem;
-            # the difference is that "traditional" marks primary/secondary dims
-            # via target_dimensions (already wired through run_single_stressor)
-            print("Judge mode: %s" % args.judge_mode)
-            judge = JudgeSystem(JudgeConfig(
-                model=judge_model,
-                passes=judge_passes,
-                temperature=judge_temp,
-            ))
+        # "vanilla" and "traditional" use the same JudgeSystem;
+        # the difference is that "traditional" marks primary/secondary dims
+        # via target_dimensions (already wired through run_single_stressor)
+        print("Judge mode: %s" % args.judge_mode)
+        judge = JudgeSystem(JudgeConfig(
+            model=judge_model,
+            passes=judge_passes,
+            temperature=judge_temp,
+        ))
 
     # Run evaluations in parallel
     temperature = config.get("evaluation", {}).get("temperature", 0.7)
@@ -750,8 +725,6 @@ Examples:
 
     # Add judge mode suffix to avoid overwriting across modes
     mode_suffix = "" if args.judge_mode == "vanilla" else "_%s" % args.judge_mode
-    if getattr(args, "energy_aware", False):
-        mode_suffix += "_energy"
 
     # Save full results (UTF-8 for Windows compatibility)
     results_path = os.path.join(args.output, "%s%s.json" % (safe_model_name, mode_suffix))
